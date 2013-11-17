@@ -24,6 +24,9 @@
  /* Revision History
   * vtTigger0jk.0: 2013-11-16
   *        Fixin for new domain
+  * Meant to be used with a bookmarklet containing this:
+  * javascript:void(function(){s=document.createElement("script");s.src="https://raw.github.com/tigger0jk/download-google-history-script/master/google-history-fixed.js";document.body.appendChild(s);})();
+  * DOES NOT WORK - &output=rss seems to be ignored now.
  
   * v2.1: February 29, 2012
   * 		Added guid, query_guid, video_length, and img_thumbnail
