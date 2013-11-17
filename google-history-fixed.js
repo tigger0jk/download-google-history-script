@@ -126,8 +126,11 @@ GoogleHistoryExtractor.prototype.parsePage = function(new_page) {
 	// Build an array with the items
 	items = new_page.match(/<item>(?:(?!<\/item>)[\s\S])+<\/item>/g);
 	
+	console.trace(items);
+	console.log(items);
 	// If we get back no items, we've reached the end of the web history and we're done
 	if(items == null) {
+		console.log("done!");
 		done = true;
 	}
 	// Otherwise, go ahead and parse the page
