@@ -928,7 +928,7 @@ Object.prototype.sort = function(desc) {
 }
 
 // Let's make sure we're in the right place first
-if (document.location.href.match(/https:\/\/(www\.)?google\.com\/history/) != null) {
+if (document.location.href.match(/https:\/\/(history\.)?google\.com\/history/) != null) {
 	// First load SWFObject, necessary for Downloadify
 	/* SWFObject v2.1 <http://code.google.com/p/swfobject/>
 		Copyright (c) 2007-2008 Geoff Stearns, Michael Williams, and Bobby van der Sluis
