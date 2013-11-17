@@ -42,6 +42,8 @@
   * 		Initial release.
   */
 
+var domain = 'https://www.google.com/history/';
+
 // Create the extractor object
 function GoogleHistoryExtractor() {
 	// Define object properties
@@ -94,7 +96,7 @@ GoogleHistoryExtractor.prototype.getPage = function(start) {
 		}
 		else if (xmlhttp.readyState==4 && xmlhttp.status==0) {
 			current_download_message = document.getElementById("extractor_overlay_solid").innerHTML;
-			document.getElementById("extractor_overlay_solid").innerHTML ='<div style="position: relative; border:3px solid gray; padding:15px; color: black; width: 400px; background-color: white; margin: auto;"><a href="javascript:void(0);" onclick=\'document.body.removeChild(document.getElementById("extractor_overlay"));document.body.removeChild(document.getElementById("extractor_overlay_solid"));downloader.cancelDownload();return false;\' style="position: absolute; right: 10px; top: 10px;">[x]</a><h1>History Connection Timed Out</h1><div id="extractor_status" style="width: 100%; text-align: left">It appears your connection to your history has timed out.<br><br>To keep downloading your history:<ul style="list-style-type:square; margin-left: 15px;"><li>Click <a href="https://www.google.com/history/" target="_blank">here</a> to log into your Google Account in another window<li>Close the other history window<li>Click the <a href="javascript:void(0);" onclick="document.getElementById(\'extractor_overlay_solid\').innerHTML = current_download_message; downloader.getPage(downloader.getLastDate(true)); return false;">here</a> to continue</li></div>';
+			document.getElementById("extractor_overlay_solid").innerHTML ='<div style="position: relative; border:3px solid gray; padding:15px; color: black; width: 400px; background-color: white; margin: auto;"><a href="javascript:void(0);" onclick=\'document.body.removeChild(document.getElementById("extractor_overlay"));document.body.removeChild(document.getElementById("extractor_overlay_solid"));downloader.cancelDownload();return false;\' style="position: absolute; right: 10px; top: 10px;">[x]</a><h1>History Connection Timed Out</h1><div id="extractor_status" style="width: 100%; text-align: left">It appears your connection to your history has timed out.<br><br>To keep downloading your history:<ul style="list-style-type:square; margin-left: 15px;"><li>Click <a href="https://history.google.com/history/" target="_blank">here</a> to log into your Google Account in another window<li>Close the other history window<li>Click the <a href="javascript:void(0);" onclick="document.getElementById(\'extractor_overlay_solid\').innerHTML = current_download_message; downloader.getPage(downloader.getLastDate(true)); return false;">here</a> to continue</li></div>';
 		}
 	}
 	
@@ -109,12 +111,12 @@ GoogleHistoryExtractor.prototype.getPage = function(start) {
 			year: current_date[2],
 			month_name: current_date[1]
 		};
-		xmlhttp.open("GET","https://www.google.com/history/lookup?q=&output=rss&num=1000&start="+start,true);
+		xmlhttp.open("GET",domain + "lookup?q=&output=rss&num=1000&start="+start,true);
 	}
 	// Otherwise we have an object specifying the year, month, and day
 	else {
 		this.current_date = start;
-		xmlhttp.open("GET","https://www.google.com/history/lookup?q=&output=rss&num=1000&yr="+start.year+"&month="+start.month+"&day="+start.day,true);
+		xmlhttp.open("GET",domain + "lookup?q=&output=rss&num=1000&yr="+start.year+"&month="+start.month+"&day="+start.day,true);
 	}
 	xmlhttp.send();
 }
@@ -951,7 +953,7 @@ if (document.location.href.match(/https:\/\/(www\.)?google\.com\/history/) != nu
 }
 else {
 	// Create the overlay with the instructional message
-	document.body.innerHTML+='<div id="extractor_overlay" style="position: fixed; left: 0px; top: 0px; padding: 0px; margin: 0px; border: 0px; width:100%; height:100%; text-align:center; z-index: 1000; background-color: black; opacity: 0.8"></div><div id="extractor_overlay_solid" style="position: absolute; width:100%; top: 100px; left: 0px; width: 100%; background-color: none; text-align:center; opacity: 1; z-index: 1001;"><div style="position: relative; border:3px solid gray; padding:15px; color: black; width: 400px; background-color: white; margin: auto;"><a href="javascript:void(0);" onclick=\'document.body.removeChild(document.getElementById("extractor_overlay"));document.body.removeChild(document.getElementById("extractor_overlay_solid"));downloader.cancelDownload();return false;\' style="position: absolute; right: 10px; top: 10px;">[x]</a><h1>Instructions</h1><div id="extractor_status" style="width: 100%; text-align: left">Please visit <a href="https://www.google.com/history/">https://www.google.com/history/</a> and log into your Google Account.  Then click the bookmarklet again.</div></div></div>';	
+	document.body.innerHTML+='<div id="extractor_overlay" style="position: fixed; left: 0px; top: 0px; padding: 0px; margin: 0px; border: 0px; width:100%; height:100%; text-align:center; z-index: 1000; background-color: black; opacity: 0.8"></div><div id="extractor_overlay_solid" style="position: absolute; width:100%; top: 100px; left: 0px; width: 100%; background-color: none; text-align:center; opacity: 1; z-index: 1001;"><div style="position: relative; border:3px solid gray; padding:15px; color: black; width: 400px; background-color: white; margin: auto;"><a href="javascript:void(0);" onclick=\'document.body.removeChild(document.getElementById("extractor_overlay"));document.body.removeChild(document.getElementById("extractor_overlay_solid"));downloader.cancelDownload();return false;\' style="position: absolute; right: 10px; top: 10px;">[x]</a><h1>Instructions</h1><div id="extractor_status" style="width: 100%; text-align: left">Please visit <a href="https://history.google.com/history/">https://history.google.com/history/</a> and log into your Google Account.  Then click the bookmarklet again.</div></div></div>';	
 }
 // Add an event handler, to capture the ESC key
 if (document.layers) { document.captureEvents(Event.KEYPRESS); }
