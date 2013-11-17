@@ -124,6 +124,8 @@ GoogleHistoryExtractor.prototype.getPage = function(start) {
 // Method to parse an XML result page
 GoogleHistoryExtractor.prototype.parsePage = function(new_page) {		
 	// Build an array with the items
+	console.trace(new_page);
+	console.log(new_page);
 	items = new_page.match(/<item>(?:(?!<\/item>)[\s\S])+<\/item>/g);
 	
 	console.trace(items);
