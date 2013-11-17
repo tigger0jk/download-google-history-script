@@ -42,7 +42,6 @@
   * 		Initial release.
   */
 
-var domain = 'https://www.google.com/history/';
 
 // Create the extractor object
 function GoogleHistoryExtractor() {
@@ -73,6 +72,7 @@ function GoogleHistoryExtractor() {
 // Method to fetch a page of history, given the starting point
 GoogleHistoryExtractor.prototype.getPage = function(start) {
 	// Check to see if we've gotten a cancellation request
+	var domain = 'https://www.google.com/history/';
 	if(this.cancellation) {
 		this.cancellation = false;
 		return;
