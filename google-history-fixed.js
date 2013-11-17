@@ -928,7 +928,6 @@ Object.prototype.sort = function(desc) {
 }
 
 // Let's make sure we're in the right place first
-alert(document.location.href);
 if (document.location.href.match(/https:\/\/(history\.)?google\.com\/history/) != null) {
 	// First load SWFObject, necessary for Downloadify
 	/* SWFObject v2.1 <http://code.google.com/p/swfobject/>
